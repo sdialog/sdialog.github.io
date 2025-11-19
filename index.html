@@ -35,17 +35,31 @@
 <body class="font-sans text-gray-800">
 
     <!-- Header -->
-    <header class="bg-white shadow-md">
+    <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://raw.githubusercontent.com/idiap/sdialog/master/docs/_static/logo-banner.png" alt="SDialog Logo" class="h-12 mr-4">
+                <a href="index.html">
+                    <img src="https://raw.githubusercontent.com/idiap/sdialog/master/docs/_static/logo-banner.png" alt="SDialog Logo" class="h-12 mr-4">
+                </a>
             </div>
-            <div class="hidden md:flex items-center space-x-4">
-                <a href="#features" class="text-gray-600 hover:text-blue-500">Features</a>
-                <a href="#quickstart" class="text-gray-600 hover:text-blue-500">Quickstart</a>
-                <a href="#contribute" class="text-gray-600 hover:text-blue-500">Contribute</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html#features" class="text-gray-600 hover:text-blue-500">Features</a>
+                <div class="relative" id="modules-dropdown-button">
+                    <button class="text-gray-600 hover:text-blue-500 flex items-center">
+                        Modules
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="modules-dropdown-menu" class="absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-48 z-10">
+                        <a href="core.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Core</a>
+                        <a href="evaluation.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Evaluation</a>
+                        <a href="interpretability.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Interpretability</a>
+                        <a href="audio.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Audio</a>
+                    </div>
+                </div>
+                <a href="index.html#quickstart" class="text-gray-600 hover:text-blue-500">Quickstart</a>
+                <a href="index.html#contribute" class="text-gray-600 hover:text-blue-500">Contribute</a>
                 <a href="https://sdialog.readthedocs.io" target="_blank" class="text-gray-600 hover:text-blue-500">Docs</a>
-                <a href="https://github.com/idiap/sdialog" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">GitHub</a>
+                <a href="https://github.com/idiap/sdialog" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 flex items-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>GitHub</a>
             </div>
             <div class="md:hidden">
                  <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-500 focus:outline-none">
@@ -56,11 +70,15 @@
             </div>
         </nav>
         <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
-            <a href="#features" class="block text-gray-600 hover:text-blue-500 py-2">Features</a>
-            <a href="#quickstart" class="block text-gray-600 hover:text-blue-500 py-2">Quickstart</a>
-            <a href="#contribute" class="block text-gray-600 hover:text-blue-500 py-2">Contribute</a>
+            <a href="index.html#features" class="block text-gray-600 hover:text-blue-500 py-2">Features</a>
+            <a href="core.html" class="block text-gray-600 hover:text-blue-500 py-2">Core</a>
+            <a href="evaluation.html" class="block text-gray-600 hover:text-blue-500 py-2">Evaluation Module</a>
+            <a href="interpretability.html" class="block text-gray-600 hover:text-blue-500 py-2">Interpretability Module</a>
+            <a href="audio.html" class="block text-gray-600 hover:text-blue-500 py-2">Audio Module</a>
+            <a href="index.html#quickstart" class="block text-gray-600 hover:text-blue-500 py-2">Quickstart</a>
+            <a href="index.html#contribute" class="block text-gray-600 hover:text-blue-500 py-2">Contribute</a>
             <a href="https://sdialog.readthedocs.io" target="_blank" class="block text-gray-600 hover:text-blue-500 py-2">Docs</a>
-            <a href="https://github.com/idiap/sdialog" target="_blank" class="block bg-blue-500 text-white px-4 py-2 mt-2 rounded-md hover:bg-blue-600 text-center">GitHub</a>
+            <a href="https://github.com/idiap/sdialog" target="_blank" class="block bg-blue-500 text-white px-4 py-2 mt-2 rounded-md hover:bg-blue-600 text-center flex items-center justify-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>GitHub</a>
         </div>
     </header>
 
@@ -154,11 +172,13 @@
                 <div class="code-block">
                     <pre><code class="language-bash">pip install sdialog</code></pre>
                 </div>
-                 <p class="text-center mt-4 text-gray-600">
-                    For audio capabilities, install with:
-                </p>
-                <div class="code-block mt-4">
-                    <pre><code class="language-bash">pip install sdialog[audio]</code></pre>
+            </div>
+            <br>
+            <h2 class="text-3xl font-bold text-center mb-8">Install audio capabilities with:</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="code-block">
+                    <pre><code class="language-bash">sudo apt-get install sox ffmpeg
+pip install sdialog[audio]</code></pre>
                 </div>
             </div>
         </div>
@@ -204,6 +224,120 @@ support_agent.serve(port=1333)
             </div>
         </div>
     </section>
+
+    <!-- Core Modules Section -->
+    <section id="modules" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Core Modules</h2>
+            <div class="space-y-16">
+
+                <!-- Evaluation Section -->
+                <div class="flex flex-wrap md:flex-nowrap items-center">
+                    <div class="w-full md:w-1/2 md:pr-8">
+                        <h3 class="text-2xl font-bold mb-4">📊 Evaluation & Comparison</h3>
+                        <p class="text-gray-600 mb-4">
+                            Score dialogs with built-in metrics and LLM judges, and compare datasets with aggregators and plots. SDialog provides a rich evaluation module to assess the quality of generated dialogues.
+                        </p>
+                        <a href="evaluation.html" class="text-blue-500 font-semibold hover:underline">Learn more about Evaluation &rarr;</a>
+                    </div>
+                    <div class="w-full md:w-1/2 mt-8 md:mt-0">
+                        <div class="code-block">
+                            <pre><code class="language-python">
+from sdialog.evaluation import (
+    LLMJudgeRealDialog, LinguisticFeatureScore,
+    FrequencyEvaluator, MeanEvaluator,
+    DatasetComparator
+)
+
+reference_dialogs = [...]
+candidate_dialogs = [...]
+
+comparator = DatasetComparator([
+  FrequencyEvaluator(LLMJudgeRealDialog(), name="Realistic dialog rate"),
+  MeanEvaluator(LinguisticFeatureScore("flesch-reading-ease")),
+])
+
+results = comparator({
+    "reference": reference_dialogs,
+    "candidate": candidate_dialogs
+})
+comparator.plot()
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interpretability Section -->
+                <div class="flex flex-wrap md:flex-nowrap items-center flex-row-reverse">
+                    <div class="w-full md:w-1/2 md:pl-8">
+                        <h3 class="text-2xl font-bold mb-4">🧠 Mechanistic Interpretability</h3>
+                        <p class="text-gray-600 mb-4">
+                            Capture per-token activations and steer models via Inspectors for analysis and interventions. Attach Inspectors to capture activations and optionally steer (add/ablate directions) to analyze or intervene in model behavior.
+                        </p>
+                         <a href="interpretability.html" class="text-blue-500 font-semibold hover:underline">Learn more about Interpretability &rarr;</a>
+                    </div>
+                    <div class="w-full md:w-1/2 mt-8 md:mt-0">
+                        <div class="code-block">
+                            <pre><code class="language-python">
+from sdialog.interpretability import Inspector
+from sdialog.agents import Agent
+import torch
+
+# Attach an inspector to a specific layer
+agent = Agent(name="Bob")
+inspector = Inspector(target="model.layers.16.post_attention_layernorm")
+agent_with_inspector = agent | inspector
+
+agent_with_inspector("How are you?")
+
+# Get activations
+activations = inspector[-1][0].act
+
+# Steer the model by subtracting a learned direction
+anger_direction = torch.load("anger_direction.pt")
+agent_steered = agent | inspector - anger_direction
+agent_steered("You are an extremely upset assistant")
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio Generation Section -->
+                <div class="flex flex-wrap md:flex-nowrap items-center">
+                    <div class="w-full md:w-1/2 md:pr-8">
+                        <h3 class="text-2xl font-bold mb-4">🔊 Audio Generation</h3>
+                        <p class="text-gray-600 mb-4">
+                           Convert text dialogs to realistic audio conversations with speech synthesis, voice assignment, and acoustic simulation. SDialog's audio module supports multiple TTS engines, voice databases, and microphone simulation for high-fidelity audio output.
+                        </p>
+                         <a href="audio.html" class="text-blue-500 font-semibold hover:underline">Learn more about Audio Generation &rarr;</a>
+                    </div>
+                    <div class="w-full md:w-1/2 mt-8 md:mt-0">
+                        <div class="code-block">
+                            <pre><code class="language-python">
+from sdialog import Dialog
+
+dialog = Dialog.from_file("my_dialog.json")
+
+# Convert to audio with default settings
+audio_dialog = dialog.to_audio(
+    perform_room_acoustics=True
+)
+
+# Customize the audio generation
+audio_dialog = dialog.to_audio(
+  perform_room_acoustics=True,
+  audio_file_format="mp3",
+  re_sampling_rate=16000,
+)
+audio_dialog.display()
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
     
     <!-- Community and Contribution Section -->
     <section id="contribute" class="py-16">
@@ -237,6 +371,20 @@ support_agent.serve(port=1333)
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        const dropdownButton = document.getElementById('modules-dropdown-button');
+        const dropdownMenu = document.getElementById('modules-dropdown-menu');
+
+        dropdownButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!dropdownButton.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
         });
     </script>
 </body>

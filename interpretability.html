@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDialog - Mechanistic Interpretability</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        body {
+            background-color: #f8fafc;
+        }
+        .hero-module {
+            background: linear-gradient(90deg, rgba(59,130,246,0.5), rgba(168,85,247,0.5));
+        }
+        .feature-icon {
+            background-color: #e0e7ff;
+            color: #3b82f6;
+        }
+        .code-block {
+            background-color: #1f2937;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: #d1d5db;
+        }
+        pre {
+            margin: 0;
+        }
+        code.hljs {
+            background: transparent;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="https://raw.githubusercontent.com/idiap/sdialog/master/docs/_static/logo-banner.png" alt="SDialog Logo" class="h-12 mr-4">
+                </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html#features" class="text-gray-600 hover:text-blue-500">Features</a>
+                <div class="relative" id="modules-dropdown-button">
+                    <button class="text-gray-600 hover:text-blue-500 flex items-center">
+                        Modules
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="modules-dropdown-menu" class="absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-48 z-10">
+                        <a href="core.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Core</a>
+                        <a href="evaluation.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Evaluation</a>
+                        <a href="interpretability.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Interpretability</a>
+                        <a href="audio.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Audio</a>
+                    </div>
+                </div>
+                <a href="index.html#quickstart" class="text-gray-600 hover:text-blue-500">Quickstart</a>
+                <a href="index.html#contribute" class="text-gray-600 hover:text-blue-500">Contribute</a>
+                <a href="https://sdialog.readthedocs.io" target="_blank" class="text-gray-600 hover:text-blue-500">Docs</a>
+                <a href="https://github.com/idiap/sdialog" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 flex items-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>GitHub</a>
+            </div>
+            <div class="md:hidden">
+                 <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-500 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
+            <a href="index.html#features" class="block text-gray-600 hover:text-blue-500 py-2">Features</a>
+            <a href="core.html" class="block text-gray-600 hover:text-blue-500 py-2">Core</a>
+            <a href="evaluation.html" class="block text-gray-600 hover:text-blue-500 py-2">Evaluation Module</a>
+            <a href="interpretability.html" class="block text-gray-600 hover:text-blue-500 py-2">Interpretability Module</a>
+            <a href="audio.html" class="block text-gray-600 hover:text-blue-500 py-2">Audio Module</a>
+            <a href="index.html#quickstart" class="block text-gray-600 hover:text-blue-500 py-2">Quickstart</a>
+            <a href="index.html#contribute" class="block text-gray-600 hover:text-blue-500 py-2">Contribute</a>
+            <a href="https://sdialog.readthedocs.io" target="_blank" class="block text-gray-600 hover:text-blue-500 py-2">Docs</a>
+            <a href="https://github.com/idiap/sdialog" target="_blank" class="block bg-blue-500 text-white px-4 py-2 mt-2 rounded-md hover:bg-blue-600 text-center flex items-center justify-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>GitHub</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-module text-white py-16">
+        <div class="container mx-auto text-center px-6">
+            <h1 class="text-4xl font-bold mb-2">Mechanistic Interpretability</h1>
+            <p class="text-lg">Inspect and steer the internal workings of language models.</p>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-lg text-gray-600 mb-8">
+                Attach Inspectors to capture per-token activations and optionally steer (add/ablate directions) to analyze or intervene in model behavior. This allows for a deeper understanding of why a model makes certain decisions and provides a mechanism to influence its behavior directly.
+            </p>
+
+            <div class="bg-white p-8 rounded-lg shadow-md mb-12">
+                <h2 class="text-2xl font-bold mb-6 text-center">Interpretability Features</h2>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start">
+                        <div class="feature-icon rounded-full p-2 mr-4 mt-1 flex-shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></div>
+                        <span><strong>Activation Inspection:</strong> Capture per-token activations from any specified layer of a model during generation.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="feature-icon rounded-full p-2 mr-4 mt-1 flex-shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                        <span><strong>Model Steering:</strong> Intervene in the model's forward pass by adding or ablating activation vectors, effectively steering its behavior towards or away from certain concepts.</span>
+                    </li>
+                    <li class="flex items-start">
+                         <div class="feature-icon rounded-full p-2 mr-4 mt-1 flex-shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div>
+                        <span><strong>Composable Interface:</strong> Inspectors can be seamlessly attached to agents using the `|` operator, making it easy to add interpretability to any agent.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <h2 class="text-2xl font-bold text-center mb-6">Usage Example</h2>
+            <div class="code-block mb-12">
+                <pre><code class="language-python">
+import sdialog
+from sdialog.interpretability import Inspector
+from sdialog.agents import Agent
+import torch
+
+sdialog.config.llm("huggingface:meta-llama/Llama-3.2-3B-Instruct")
+
+# Create an agent and an inspector targeting a specific layer
+agent = Agent(name="Bob")
+inspector = Inspector(target="model.layers.16.post_attention_layernorm")
+
+# Attach the inspector to the agent
+agent_with_inspector = agent | inspector
+
+# The inspector will now capture activations for all calls to the agent
+agent_with_inspector("How are you?")
+agent_with_inspector("Cool!")
+
+# Get the last response's first token activation vector
+activation_vector = inspector[-1][0].act
+
+# Load a pre-computed direction vector (e.g., for 'anger')
+anger_direction = torch.load("anger_direction.pt")
+
+# Steer the agent by subtracting the anger direction from activations
+agent_steered = agent | inspector - anger_direction
+agent_steered("You are an extremely upset assistant")  # Agent's response will be less angry
+                </code></pre>
+            </div>
+            
+            <div class="text-center">
+                <a href="https://github.com/idiap/sdialog/blob/main/tutorials/00_overview/6.agent%2Binspector_refusal.ipynb" target="_blank" class="bg-blue-500 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-600">
+                    View Interpretability Tutorial
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/idiap/sdialog" class="hover:text-blue-400">GitHub</a>
+                <a href="https://sdialog.readthedocs.io" class="hover:text-blue-400">Documentation</a>
+                <a href="https://pypi.org/project/sdialog/" class="hover:text-blue-400">PyPI</a>
+                <a href="https://github.com/idiap/sdialog/issues" class="hover:text-blue-400">Issues</a>
+            </div>
+            <p>&copy; 2025 Idiap Research Institute. Licensed under MIT.</p>
+        </div>
+    </footer>
+
+    <script>
+        hljs.highlightAll();
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const dropdownButton = document.getElementById('modules-dropdown-button');
+        const dropdownMenu = document.getElementById('modules-dropdown-menu');
+
+        dropdownButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!dropdownButton.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
