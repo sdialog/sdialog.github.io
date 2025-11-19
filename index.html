@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDialog - Synthetic Dialogue Generation Toolkit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        body {
+            background-color: #f8fafc;
+        }
+        .hero {
+            background: linear-gradient(90deg, rgba(59,130,246,0.5), rgba(168,85,247,0.5));
+        }
+        .feature-icon {
+            background-color: #e0e7ff;
+            color: #3b82f6;
+        }
+        .code-block {
+            background-color: #1f2937;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: #d1d5db;
+        }
+        pre {
+            margin: 0;
+        }
+        code.hljs {
+            background: transparent;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://raw.githubusercontent.com/idiap/sdialog/master/docs/_static/logo-banner.png" alt="SDialog Logo" class="h-12 mr-4">
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#features" class="text-gray-600 hover:text-blue-500">Features</a>
+                <a href="#quickstart" class="text-gray-600 hover:text-blue-500">Quickstart</a>
+                <a href="#contribute" class="text-gray-600 hover:text-blue-500">Contribute</a>
+                <a href="https://sdialog.readthedocs.io" target="_blank" class="text-gray-600 hover:text-blue-500">Docs</a>
+                <a href="https://github.com/idiap/sdialog" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">GitHub</a>
+            </div>
+            <div class="md:hidden">
+                 <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-500 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
+            <a href="#features" class="block text-gray-600 hover:text-blue-500 py-2">Features</a>
+            <a href="#quickstart" class="block text-gray-600 hover:text-blue-500 py-2">Quickstart</a>
+            <a href="#contribute" class="block text-gray-600 hover:text-blue-500 py-2">Contribute</a>
+            <a href="https://sdialog.readthedocs.io" target="_blank" class="block text-gray-600 hover:text-blue-500 py-2">Docs</a>
+            <a href="https://github.com/idiap/sdialog" target="_blank" class="block bg-blue-500 text-white px-4 py-2 mt-2 rounded-md hover:bg-blue-600 text-center">GitHub</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero text-white py-20">
+        <div class="container mx-auto text-center px-6">
+            <h1 class="text-5xl font-bold mb-4">Build, Simulate, and Evaluate Conversational Agents</h1>
+            <p class="text-xl mb-8">An open-source toolkit for end-to-end LLM-based dialogue systems.</p>
+            <a href="#quickstart" class="bg-white text-blue-500 font-bold py-3 px-6 rounded-full hover:bg-gray-100">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">What is SDialog?</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600">
+                SDialog is an MIT-licensed open-source toolkit for building, simulating, and evaluating LLM-based conversational agents end-to-end. It aims to bridge agent construction → dialog generation → evaluation → (optionally) interpretability in a single reproducible workflow, so you can generate reliable, controllable dialog systems or data at scale.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="bg-gray-50 py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="feature-icon rounded-full p-3 mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Standard Dialog Schema</h3>
+                    </div>
+                    <p class="text-gray-600">A standardized dialog schema with JSON import/export to unify dataset formats.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="feature-icon rounded-full p-3 mr-4">
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Multi-Agent Simulation</h3>
+                    </div>
+                    <p class="text-gray-600">Persona-driven simulation with contexts, tools, and thoughts.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="feature-icon rounded-full p-3 mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 16v-2m8-8h2M4 12H2m15.364 6.364l1.414 1.414M4.222 4.222l1.414 1.414m12.728 0l-1.414 1.414M5.636 18.364l-1.414 1.414"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Composable Orchestration</h3>
+                    </div>
+                    <p class="text-gray-600">Precise control over agent behavior and dialogue flow.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="feature-icon rounded-full p-3 mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Built-in Evaluation</h3>
+                    </div>
+                    <p class="text-gray-600">Use built-in metrics and LLM-as-a-judge for comparison and iteration.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="feature-icon rounded-full p-3 mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Mechanistic Interpretability</h3>
+                    </div>
+                    <p class="text-gray-600">Inspect and steer model activations for analysis and intervention.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="feature-icon rounded-full p-3 mr-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Broad LLM Interoperability</h3>
+                    </div>
+                    <p class="text-gray-600">Works with OpenAI, Hugging Face, Ollama, AWS Bedrock, Google GenAI, and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Installation Section -->
+    <section id="installation" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Installation</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="code-block">
+                    <pre><code class="language-bash">pip install sdialog</code></pre>
+                </div>
+                 <p class="text-center mt-4 text-gray-600">
+                    For audio capabilities, install with:
+                </p>
+                <div class="code-block mt-4">
+                    <pre><code class="language-bash">pip install sdialog[audio]</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quickstart Section -->
+    <section id="quickstart" class="bg-gray-50 py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Quickstart</h2>
+            <div class="max-w-4xl mx-auto code-block">
+                <pre><code class="language-python">
+import sdialog
+from sdialog import Context
+from sdialog.agents import Agent
+from sdialog.personas import SupportAgent, Customer
+from sdialog.orchestrators import SimpleReflexOrchestrator
+
+# Configure your preferred LLM backend
+sdialog.config.llm("openai:gpt-4.1", temperature=1)
+
+# Define personas
+support_persona = SupportAgent(name="Ava", politeness="high")
+customer_persona = Customer(name="Riley", issue="double charge")
+
+# Define a simple rule-based orchestrator
+react_refund = SimpleReflexOrchestrator(
+  condition=lambda utt: "refund" in utt.lower(),
+  instruction="Follow refund policy; verify account, apologize, refund.",
+)
+
+# Create agents and attach the orchestrator
+support_agent = Agent(persona=support_persona) | react_refund
+simulated_customer = Agent(persona=customer_persona, first_utterance="Hi!")
+
+# Generate a dialogue
+dialog = simulated_customer.dialog_with(support_agent)
+dialog.print(all=True)
+dialog.to_file("dialog.json")
+
+# Serve the agent via an OpenAI-compatible API
+support_agent.serve(port=1333)
+                </code></pre>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Community and Contribution Section -->
+    <section id="contribute" class="py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Join the Community</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-8">
+                SDialog is a community-driven project. We welcome contributions of all kinds, from standardizing datasets and developing new components to improving documentation and reporting bugs.
+            </p>
+            <a href="https://github.com/idiap/sdialog/issues" target="_blank" class="bg-blue-500 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-600">Contribute on GitHub</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/idiap/sdialog" class="hover:text-blue-400">GitHub</a>
+                <a href="https://sdialog.readthedocs.io" class="hover:text-blue-400">Documentation</a>
+                <a href="https://pypi.org/project/sdialog/" class="hover:text-blue-400">PyPI</a>
+                <a href="https://github.com/idiap/sdialog/issues" class="hover:text-blue-400">Issues</a>
+            </div>
+            <p>&copy; 2025 Idiap Research Institute. Licensed under MIT.</p>
+        </div>
+    </footer>
+
+    <script>
+        hljs.highlightAll();
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
