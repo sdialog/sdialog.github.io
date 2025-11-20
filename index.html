@@ -163,6 +163,51 @@
             </div>
         </div>
     </section>
+
+    <!-- Fundamental Building Blocks Section -->
+    <section id="building-blocks" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Fundamental Building Blocks</h2>
+            <p class="text-lg text-gray-600 mb-8 text-center max-w-3xl mx-auto">
+                The core of SDialog is built upon a few key concepts that enable flexible and powerful conversational AI simulations. These include programmable Personas, modular Agents that encapsulate them, and broad support for various LLM backends.
+            </p>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex items-center mb-2">
+                             <div class="feature-icon rounded-full p-2 mr-3"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div>
+                            <h3 class="text-xl font-semibold">Personas</h3>
+                        </div>
+                        <p class="text-gray-600 ml-10">Define the characteristics, background, and communication style of a conversational participant. Use built-in personas or create your own.</p>
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <div class="feature-icon rounded-full p-2 mr-3"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                            <h3 class="text-xl font-semibold">Agents</h3>
+                        </div>
+                        <p class="text-gray-600 ml-10">The main actors in a dialogue. Agents are built around a persona and can be equipped with tools, thoughts, and orchestrators.</p>
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <div class="feature-icon rounded-full p-2 mr-3"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
+                            <h3 class="text-xl font-semibold">Interoperability</h3>
+                        </div>
+                        <p class="text-gray-600 ml-10">Connect to a wide range of LLM providers including OpenAI, Hugging Face, Ollama, AWS Bedrock, and Google GenAI.</p>
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <div class="feature-icon rounded-full p-2 mr-3"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></div>
+                            <h3 class="text-xl font-semibold">Multi-Agent Simulation</h3>
+                        </div>
+                        <p class="text-gray-600 ml-10">Simulate conversations between two or more agents to generate realistic dialogue data for testing and training.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="core.html" class="text-blue-500 font-semibold hover:underline text-lg">Learn more about Core Concepts &rarr;</a>
+            </div>
+        </div>
+    </section>
     
     <!-- Installation Section -->
     <section id="installation" class="py-16">
@@ -228,7 +273,8 @@ support_agent.serve(port=1333)
     <!-- Core Modules Section -->
     <section id="modules" class="py-16">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Core Modules</h2>
+            <h2 class="text-3xl font-bold text-center mb-4">Core Modules</h2>
+            <p class="text-center text-gray-600 mb-12">Explore SDialog's specialized modules for evaluation, interpretability, and audio generation.</p>
             <div class="space-y-16">
 
                 <!-- Evaluation Section -->
@@ -238,7 +284,10 @@ support_agent.serve(port=1333)
                         <p class="text-gray-600 mb-4">
                             Score dialogs with built-in metrics and LLM judges, and compare datasets with aggregators and plots. SDialog provides a rich evaluation module to assess the quality of generated dialogues.
                         </p>
-                        <a href="evaluation.html" class="text-blue-500 font-semibold hover:underline">Learn more about Evaluation &rarr;</a>
+                        <div class="flex gap-4">
+                            <a href="evaluation.html" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-600">Explore Evaluation Module</a>
+                            <a href="evaluation.html" class="text-blue-500 font-semibold hover:underline flex items-center">Learn more &rarr;</a>
+                        </div>
                     </div>
                     <div class="w-full md:w-1/2 mt-8 md:mt-0">
                         <div class="code-block">
@@ -274,7 +323,10 @@ comparator.plot()
                         <p class="text-gray-600 mb-4">
                             Capture per-token activations and steer models via Inspectors for analysis and interventions. Attach Inspectors to capture activations and optionally steer (add/ablate directions) to analyze or intervene in model behavior.
                         </p>
-                         <a href="interpretability.html" class="text-blue-500 font-semibold hover:underline">Learn more about Interpretability &rarr;</a>
+                        <div class="flex gap-4">
+                            <a href="interpretability.html" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-600">Explore Interpretability Module</a>
+                            <a href="interpretability.html" class="text-blue-500 font-semibold hover:underline flex items-center">Learn more &rarr;</a>
+                        </div>
                     </div>
                     <div class="w-full md:w-1/2 mt-8 md:mt-0">
                         <div class="code-block">
@@ -309,7 +361,10 @@ agent_steered("You are an extremely upset assistant")
                         <p class="text-gray-600 mb-4">
                            Convert text dialogs to realistic audio conversations with speech synthesis, voice assignment, and acoustic simulation. SDialog's audio module supports multiple TTS engines, voice databases, and microphone simulation for high-fidelity audio output.
                         </p>
-                         <a href="audio.html" class="text-blue-500 font-semibold hover:underline">Learn more about Audio Generation &rarr;</a>
+                        <div class="flex gap-4">
+                            <a href="audio.html" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-600">Explore Audio Module</a>
+                            <a href="audio.html" class="text-blue-500 font-semibold hover:underline flex items-center">Learn more &rarr;</a>
+                        </div>
                     </div>
                     <div class="w-full md:w-1/2 mt-8 md:mt-0">
                         <div class="code-block">
